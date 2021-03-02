@@ -9,6 +9,9 @@ public class AccountInfo
 	public string Id { get; set; } = "";
 	public string Password { get; set; } = "";
 
+	/// <summary>
+	/// Create a new AccountInfo with DataManager.NoKey value.
+	/// </summary>
 	public AccountInfo(string label, string id, string password)
 	{
 		Key = DataManager.NoKey;

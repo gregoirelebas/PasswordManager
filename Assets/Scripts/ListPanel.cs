@@ -5,7 +5,6 @@ using UnityEngine;
 public class ListPanel : MonoBehaviour
 {
 	[SerializeField] private Transform container = null;
-    [SerializeField] private InfoPanel infoPanel = null;
 
 	[SerializeField] private GameObject accountBtnPrefab = null;
 
@@ -22,6 +21,9 @@ public class ListPanel : MonoBehaviour
 		UpdateInfoList();
 	}
 
+	/// <summary>
+	/// Delete all buttons of container and create new buttons using AccountInfo.
+	/// </summary>
 	public void UpdateInfoList()
 	{
 		for (int i = 0; i < container.childCount; i++)

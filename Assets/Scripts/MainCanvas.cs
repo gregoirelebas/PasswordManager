@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class MainCanvas : MonoBehaviour
 {
-    [SerializeField] private ListPanel listPanel = null;
     [SerializeField] private InfoPanel infoPanel = null;
-    [SerializeField] private EditionPanel editionPanel = null;
 
     public Action OnModification = null;
 
@@ -16,6 +14,9 @@ public class MainCanvas : MonoBehaviour
         DataManager.Initialize();
     }
 
+    /// <summary>
+    /// Set active and set infos to display.
+    /// </summary>
 	public void DisplayInfoPanel(AccountInfo info)
 	{
         infoPanel.gameObject.SetActive(true);

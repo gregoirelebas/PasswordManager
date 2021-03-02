@@ -30,6 +30,10 @@ public class EditionPanel : MonoBehaviour
         passwordField.text = "";
     }
 
+    /// <summary>
+    /// Set input field texts based on info.
+    /// </summary>
+    /// <param name="info"></param>
 	public void SetInfo(AccountInfo info)
 	{
         this.info = info;
@@ -39,6 +43,9 @@ public class EditionPanel : MonoBehaviour
         passwordField.text = info.Password;
 	}
 
+    /// <summary>
+    /// Save the info with modification.
+    /// </summary>
 	public void Save()
 	{
         string label = labelField.text;

@@ -10,6 +10,9 @@ public static class DataManager
 	public static int KeyIndex { get; private set; } = 0;
 	public const string NoKey = "NoKey";
 
+	/// <summary>
+	/// Fill the dictionary with debug data.
+	/// </summary>
 	public static void Initialize()
 	{
 		AddInfo(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
@@ -22,6 +25,9 @@ public static class DataManager
 		AddInfo(new AccountInfo("Playstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
 	}
 
+	/// <summary>
+	/// Return the AccountInfo linked to the key.
+	/// </summary>
 	public static AccountInfo GetInfo(string key)
 	{
 		AccountInfo info;
@@ -30,11 +36,17 @@ public static class DataManager
 		return info;
 	}
 
+	/// <summary>
+	/// Return all infos as a List<AccountInfo>.
+	/// </summary>
 	public static List<AccountInfo> GetAllInfos()
 	{
 		return infos.Values.ToList();
 	}
 
+	/// <summary>
+	/// Try to add a new AccountInfo to dictionary. Create a key if none exist or call Modify() if key already exist.
+	/// </summary>
 	public static void AddInfo(AccountInfo info)
 	{
 		if (info.Key.Equals(NoKey))
@@ -54,9 +66,12 @@ public static class DataManager
 		}
 	}
 
+	/// <summary>
+	/// Modify an existing AccountInfo. Call Add() if key don't exist or not in dictionary.
+	/// </summary>
 	public static void ModifyInfo(AccountInfo info)
 	{
-		if (infos.ContainsKey(info.Key))
+		if (!info.Key.Equals(NoKey) && infos.ContainsKey(info.Key))
 		{
 			infos[info.Key] = info;
 		}
@@ -66,6 +81,9 @@ public static class DataManager
 		}
 	}
 
+	/// <summary>
+	/// Remove the AccountInfo from the dictionary.
+	/// </summary>
 	public static void DeleteInfo(AccountInfo info)
 	{
 		if (infos.ContainsKey(info.Key))

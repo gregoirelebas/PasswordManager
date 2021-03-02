@@ -16,6 +16,9 @@ public class AccountBtn : MonoBehaviour
 		GetComponent<Button>().onClick.AddListener(OnClicked);
 	}
 
+	/// <summary>
+	/// Update text based on info.
+	/// </summary>
 	public void SetAccountInfo(MainCanvas mainCanvas, AccountInfo info)
 	{
 		this.mainCanvas = mainCanvas;
@@ -24,6 +27,9 @@ public class AccountBtn : MonoBehaviour
 		label.text = info.Label;
 	}
 
+	/// <summary>
+	/// Ask MainCanvas to diplay the InfoPanel.
+	/// </summary>
 	public void OnClicked()
 	{
 		mainCanvas.DisplayInfoPanel(info);

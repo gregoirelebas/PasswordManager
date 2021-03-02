@@ -28,6 +28,9 @@ public class InfoPanel : MonoBehaviour
 		deleteBtn.onClick.AddListener(Delete);
 	}
 
+	/// <summary>
+	/// Update text based on infos.
+	/// </summary>
 	public void SetInfos(AccountInfo info)
 	{
 		this.info = info;
@@ -37,6 +40,9 @@ public class InfoPanel : MonoBehaviour
 		passwordField.text = info.Password;
 	}
 
+	/// <summary>
+	/// Set active the edition panel and desactivate self.
+	/// </summary>
 	public void Modify()
 	{
 		editionPanel.gameObject.SetActive(true);
@@ -45,6 +51,9 @@ public class InfoPanel : MonoBehaviour
 		gameObject.SetActive(false);
 	}
 
+	/// <summary>
+	/// Delete the AccountInfo and desactivate self.
+	/// </summary>
 	public void Delete()
 	{
 		DataManager.DeleteInfo(info);
