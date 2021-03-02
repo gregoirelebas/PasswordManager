@@ -9,47 +9,16 @@ public class MainCanvas : MonoBehaviour
 
 	[SerializeField] private GameObject accountBtnPrefab = null;
 
-	private List<AccountInfo> infos = new List<AccountInfo>();
-
 	private void Awake()
 	{
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		infos.Add(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		DataManager.Initialize();
 
 		for (int i = 0; i < container.childCount; i++)
 		{
 			Destroy(container.GetChild(i).gameObject);
 		}
 
-		foreach (AccountInfo info in infos)
+		foreach (AccountInfo info in DataManager.GetAllInfos())
 		{
 			AccountBtn newButton = Instantiate(accountBtnPrefab, container).GetComponent<AccountBtn>();
 
