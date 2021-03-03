@@ -9,6 +9,7 @@ public class ListPanel : MonoBehaviour
 	[SerializeField] private GameObject accountBtnPrefab = null;
 
 	private MainCanvas mainCanvas = null;
+	private bool sortAscending = true;
 
 	private void Awake()
 	{
@@ -21,6 +22,16 @@ public class ListPanel : MonoBehaviour
 		UpdateInfoList();
 	}
 
+	private int SortByNameAscending(AccountInfo a, AccountInfo b)
+	{
+		return a.Label.CompareTo(b.Label);
+	}
+
+	private int SortByNameDescending(AccountInfo a, AccountInfo b)
+	{
+		return b.Label.CompareTo(a.Label);
+	}
+
 	/// <summary>
 	/// Delete all buttons of container and create new buttons using AccountInfo.
 	/// </summary>
@@ -31,7 +42,18 @@ public class ListPanel : MonoBehaviour
 			Destroy(container.GetChild(i).gameObject);
 		}
 
-		foreach (AccountInfo info in DataManager.GetAllInfos())
+		List<AccountInfo> infos = DataManager.GetAllInfos();
+
+		if (sortAscending)
+		{
+			infos.Sort(SortByNameAscending);
+		}
+		else
+		{
+			infos.Sort(SortByNameDescending);
+		}
+
+		foreach (AccountInfo info in infos)
 		{
 			AccountBtn newButton = Instantiate(accountBtnPrefab, container).GetComponent<AccountBtn>();
 
