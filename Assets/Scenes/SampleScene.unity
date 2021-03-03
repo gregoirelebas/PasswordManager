@@ -491,9 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7246a82a9780714baded1dd19237040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listPanel: {fileID: 358882199}
   infoPanel: {fileID: 160989674}
-  editionPanel: {fileID: 1940551446}
 --- !u!1 &157639792
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1191f08bfafb8b4f9ca2e4bb3c6fefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listPanel: {fileID: 0}
   labelField: {fileID: 1866834821}
   idField: {fileID: 858214653}
   passwordField: {fileID: 346346950}
@@ -1101,7 +1098,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 1283415387}
-  infoPanel: {fileID: 160989674}
   accountBtnPrefab: {fileID: 1428637151126035218, guid: a75ec32bea02970418fda08de232d2ac,
     type: 3}
 --- !u!1 &361796194
@@ -3253,17 +3249,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 358882195}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1940551442}
         m_MethodName: SetActive
         m_Mode: 6
@@ -3411,17 +3396,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 358882195}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1935834487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3548,7 +3522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251ed5ae2797e9140a38a559584197de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 0}
   labelField: {fileID: 428958769}
   idField: {fileID: 788933860}
   passwordField: {fileID: 1591972176}

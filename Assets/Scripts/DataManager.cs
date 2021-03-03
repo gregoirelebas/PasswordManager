@@ -12,43 +12,59 @@ public static class DataManager
 	public static int KeyIndex { get; private set; } = 0;
 	public const string NoKey = "NoKey";
 
+	public const string DirectoryName = "Data";
+	public const string FileName = "data.json";
+
+	/// <summary>
+	/// Try to read the JSON file and load data is success.
+	/// </summary>
 	private static void LoadData()
 	{
-		string dirPath = Application.persistentDataPath + "/PasswordManager";
+		KeyIndex = PlayerPrefs.GetInt("DataKeyIndex", 0);
+
+		string dirPath = Application.persistentDataPath + "/" + DirectoryName;
 
 		if (Directory.Exists(dirPath))
 		{
-			string filePath = dirPath += "/data.json";
+			string filePath = dirPath += "/" + FileName;
 			if (File.Exists(filePath))
 			{
 				using (StreamReader reader = new StreamReader(filePath))
 				{
 					string jsonData = reader.ReadToEnd();
 					infos = JsonConvert.DeserializeObject<Dictionary<string, AccountInfo>> (jsonData);
+
+					reader.Dispose();
 				}
 			}
 		}
 	}
 
+	/// <summary>
+	/// Save all data in a JSON file. Write over all data.
+	/// </summary>
 	public static void SaveData()
 	{
-		string dirPath = Application.persistentDataPath + "/Data";
+		PlayerPrefs.SetInt("DataKeyIndex", KeyIndex);
+		PlayerPrefs.Save();
+
+		string dirPath = Application.persistentDataPath + "/" + DirectoryName;
 
 		if (!Directory.Exists(dirPath))
 		{
 			Directory.CreateDirectory(dirPath);
 		}
 
-		string filePath = dirPath += "/data.json";
-		if (!File.Exists(filePath))
-		{
-			File.Create(filePath);
-		}
+		string filePath = dirPath += "/" + FileName;
 
 		string jsonData = JsonConvert.SerializeObject(infos);
-		using (StreamWriter writer = new StreamWriter(filePath))
+
+		FileStream fileStream = File.Open(filePath, FileMode.Create);
+		using (StreamWriter writer = new StreamWriter(fileStream))
 		{
 			writer.WriteLine(jsonData);
+
+			writer.Dispose();
 		}
 	}
 

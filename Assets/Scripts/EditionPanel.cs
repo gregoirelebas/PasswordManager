@@ -6,63 +6,74 @@ using UnityEngine.UI;
 
 public class EditionPanel : MonoBehaviour
 {
-    [Header("Info fields")]
-    [SerializeField] TMP_InputField labelField = null;
-    [SerializeField] TMP_InputField idField = null;
-    [SerializeField] TMP_InputField passwordField = null;
-    [Space()]
-    [SerializeField] private Button saveBtn = null;
+	[Header("Info fields")]
+	[SerializeField] TMP_InputField labelField = null;
+	[SerializeField] TMP_InputField idField = null;
+	[SerializeField] TMP_InputField passwordField = null;
+	[Space()]
+	[SerializeField] private Button saveBtn = null;
 
-    private MainCanvas mainCanvas = null;
-    private AccountInfo info = null;
+	private MainCanvas mainCanvas = null;
+	private AccountInfo info = null;
 
 	private void Awake()
 	{
-        mainCanvas = GetComponentInParent<MainCanvas>();
+		mainCanvas = GetComponentInParent<MainCanvas>();
 
-        saveBtn.onClick.AddListener(Save);
+		saveBtn.onClick.AddListener(Save);
 	}
 
 	private void OnEnable()
 	{
-        labelField.text = "";
-        idField.text = "";
-        passwordField.text = "";
-    }
+		labelField.text = "";
+		idField.text = "";
+		passwordField.text = "";
 
-    /// <summary>
-    /// Set input field texts based on info.
-    /// </summary>
-    /// <param name="info"></param>
-	public void SetInfo(AccountInfo info)
-	{
-        this.info = info;
-
-        labelField.text = info.Label;
-        idField.text = info.Id;
-        passwordField.text = info.Password;
+		SetInfo(null);
 	}
 
-    /// <summary>
-    /// Save the info with modification.
-    /// </summary>
+	/// <summary>
+	/// Set input field texts based on info.
+	/// </summary>
+	public void SetInfo(AccountInfo info)
+	{
+		this.info = info;
+
+		if (info != null)
+		{
+			labelField.text = info.Label;
+			idField.text = info.Id;
+			passwordField.text = info.Password;
+		}
+	}
+
+	/// <summary>
+	/// Save the info with modification.
+	/// </summary>
 	public void Save()
 	{
-        string label = labelField.text;
-        string id = idField.text;
-        string password = passwordField.text;
+		string label = labelField.text;
+		string id = idField.text;
+		string password = passwordField.text;
 
 		if (!label.Equals("") && !id.Equals("") && !password.Equals(""))
 		{
-            info.Label = label;
-            info.Id = id;
-            info.Password = password;
+			if (info == null)
+			{
+				info = new AccountInfo(label, id, password);
+			}
+			else
+			{
+				info.Label = label;
+				info.Id = id;
+				info.Password = password;
+			}
 
-            DataManager.AddInfo(info);
+			DataManager.AddInfo(info);
 
-            mainCanvas.OnModification?.Invoke();
-            
-            gameObject.SetActive(false);
+			mainCanvas.OnModification?.Invoke();
+
+			gameObject.SetActive(false);
 		}
 	}
 }
