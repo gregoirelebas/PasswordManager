@@ -32,6 +32,13 @@ public class ListPanel : MonoBehaviour
 		return b.Label.CompareTo(a.Label);
 	}
 
+	public void InvertSort()
+	{
+		sortAscending = !sortAscending;
+
+		UpdateInfoList();
+	}
+
 	/// <summary>
 	/// Delete all buttons of container and create new buttons using AccountInfo.
 	/// </summary>
