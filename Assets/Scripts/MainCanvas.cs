@@ -14,9 +14,14 @@ public class MainCanvas : MonoBehaviour
         DataManager.Initialize();
     }
 
-    /// <summary>
-    /// Set active and set infos to display.
-    /// </summary>
+	private void OnDestroy()
+	{
+		DataManager.SaveData();
+	}
+
+	/// <summary>
+	/// Set active and set infos to display.
+	/// </summary>
 	public void DisplayInfoPanel(AccountInfo info)
 	{
         infoPanel.gameObject.SetActive(true);

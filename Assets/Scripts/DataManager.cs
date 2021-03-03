@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -10,19 +12,63 @@ public static class DataManager
 	public static int KeyIndex { get; private set; } = 0;
 	public const string NoKey = "NoKey";
 
+	private static void LoadData()
+	{
+		string dirPath = Application.persistentDataPath + "/PasswordManager";
+
+		if (Directory.Exists(dirPath))
+		{
+			string filePath = dirPath += "/data.json";
+			if (File.Exists(filePath))
+			{
+				using (StreamReader reader = new StreamReader(filePath))
+				{
+					string jsonData = reader.ReadToEnd();
+					infos = JsonConvert.DeserializeObject<Dictionary<string, AccountInfo>> (jsonData);
+				}
+			}
+		}
+	}
+
+	public static void SaveData()
+	{
+		string dirPath = Application.persistentDataPath + "/Data";
+
+		if (!Directory.Exists(dirPath))
+		{
+			Directory.CreateDirectory(dirPath);
+		}
+
+		string filePath = dirPath += "/data.json";
+		if (!File.Exists(filePath))
+		{
+			File.Create(filePath);
+		}
+
+		string jsonData = JsonConvert.SerializeObject(infos);
+		using (StreamWriter writer = new StreamWriter(filePath))
+		{
+			writer.WriteLine(jsonData);
+		}
+	}
+
 	/// <summary>
 	/// Fill the dictionary with debug data.
 	/// </summary>
 	public static void Initialize()
 	{
-		AddInfo(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		AddInfo(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		AddInfo(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		AddInfo(new AccountInfo("Linkedin", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		AddInfo(new AccountInfo("Facebook", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		AddInfo(new AccountInfo("Twitter", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		AddInfo(new AccountInfo("Youtube", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		AddInfo(new AccountInfo("Playstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		infos = new Dictionary<string, AccountInfo>();
+
+		LoadData();
+
+		//AddInfo(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		//AddInfo(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		//AddInfo(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		//AddInfo(new AccountInfo("Linkedin", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		//AddInfo(new AccountInfo("Facebook", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		//AddInfo(new AccountInfo("Twitter", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		//AddInfo(new AccountInfo("Youtube", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		//AddInfo(new AccountInfo("Playstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
 	}
 
 	/// <summary>
