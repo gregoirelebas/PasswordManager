@@ -10,8 +10,6 @@ public class EditionPanel : MonoBehaviour
 	[SerializeField] TMP_InputField labelField = null;
 	[SerializeField] TMP_InputField idField = null;
 	[SerializeField] TMP_InputField passwordField = null;
-	[Space()]
-	[SerializeField] private Button saveBtn = null;
 
 	private MainCanvas mainCanvas = null;
 	private AccountInfo info = null;
@@ -19,8 +17,6 @@ public class EditionPanel : MonoBehaviour
 	private void Awake()
 	{
 		mainCanvas = GetComponentInParent<MainCanvas>();
-
-		saveBtn.onClick.AddListener(Save);
 	}
 
 	private void OnEnable()

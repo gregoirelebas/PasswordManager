@@ -14,8 +14,7 @@ public class InfoPanel : MonoBehaviour
 
 	[Header("Edition")]
 	[SerializeField] private EditionPanel editionPanel = null;
-	[SerializeField] private Button modifyBtn = null;
-	[SerializeField] private Button deleteBtn = null;
+	[SerializeField] private ConfirmationPopup confirmationPopup = null;
 
 	private MainCanvas mainCanvas = null;
 	private AccountInfo info = null;
@@ -23,9 +22,6 @@ public class InfoPanel : MonoBehaviour
 	private void Awake()
 	{
 		mainCanvas = GetComponentInParent<MainCanvas>();
-
-		modifyBtn.onClick.AddListener(Modify);
-		deleteBtn.onClick.AddListener(Delete);
 	}
 
 	/// <summary>
@@ -56,10 +52,14 @@ public class InfoPanel : MonoBehaviour
 	/// </summary>
 	public void Delete()
 	{
-		DataManager.DeleteInfo(info);
+		confirmationPopup.gameObject.SetActive(true);
+		confirmationPopup.OnValidation += () =>
+		{
+			DataManager.DeleteInfo(info);
 
-		mainCanvas.OnModification?.Invoke();
+			mainCanvas.OnModification?.Invoke();
 
-		gameObject.SetActive(false);
+			gameObject.SetActive(false);
+		};
 	}
 }
