@@ -13,6 +13,7 @@ public enum Lang
 public class MainCanvas : MonoBehaviour
 {
 	[SerializeField] private InfoPanel infoPanel = null;
+	[SerializeField] private Lang debugLang = Lang.French;
 
 	public Action OnModification = null;
 	public Action OnLangSet = null;
@@ -22,6 +23,8 @@ public class MainCanvas : MonoBehaviour
 	private void Awake()
 	{
 		DataManager.Initialize();
+
+		CurrentLang = debugLang;
 
 		OnModification += DataManager.SaveData;
 	}

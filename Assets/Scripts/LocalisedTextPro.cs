@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LocalisedTextPro : MonoBehaviour
 {
-    [SerializeField] private string frenchText = null;
     [SerializeField] private string englishText = null;
+    [SerializeField] private string frenchText = null;
 
 	private MainCanvas mainCanvas = null;
     private TextMeshProUGUI textMesh = null;
@@ -15,7 +15,10 @@ public class LocalisedTextPro : MonoBehaviour
 	{
 		textMesh = GetComponent<TextMeshProUGUI>();
 		mainCanvas = GetComponentInParent<MainCanvas>();
+	}
 
+	private void Start()
+	{
 		SetTextByLang();
 		mainCanvas.OnLangSet += SetTextByLang;
 	}

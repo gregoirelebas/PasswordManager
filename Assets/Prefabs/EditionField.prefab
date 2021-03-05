@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 548177956822621958}
   - component: {fileID: 548177956822621960}
   - component: {fileID: 548177956822621961}
+  - component: {fileID: 4736692708501041497}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -133,6 +134,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4736692708501041497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548177956822621959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b19efd5956d8454b88fb5752cd815c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frenchText: 
+  englishText: 
 --- !u!1 &548177957309571049
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548177957309571048}
   m_Layer: 5
-  m_Name: LabelField
+  m_Name: EditionField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,6 +553,7 @@ GameObject:
   - component: {fileID: 548177958046060124}
   - component: {fileID: 548177958046060125}
   - component: {fileID: 548177958046060122}
+  - component: {fileID: 2236346991164217124}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -618,7 +634,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
+  m_fontSize: 26.15
   m_fontSizeBase: 14.06
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -680,3 +696,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2236346991164217124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548177958046060120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b19efd5956d8454b88fb5752cd815c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frenchText: Taper ici...
+  englishText: Type here...
