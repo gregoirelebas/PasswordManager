@@ -32,11 +32,19 @@ public static class DataManager
 				using (StreamReader reader = new StreamReader(filePath))
 				{
 					string jsonData = reader.ReadToEnd();
-					infos = JsonConvert.DeserializeObject<Dictionary<string, AccountInfo>> (jsonData);
+					infos = JsonConvert.DeserializeObject<Dictionary<string, AccountInfo>>(jsonData);
 
-					reader.Dispose();
+					Debug.Log("Raw JSONData : " + jsonData);
 				}
 			}
+			else
+			{
+				Debug.Log("File not found : " + filePath);
+			}
+		}
+		else
+		{
+			Debug.Log("Folder not found : " + dirPath);
 		}
 	}
 
@@ -53,6 +61,8 @@ public static class DataManager
 		if (!Directory.Exists(dirPath))
 		{
 			Directory.CreateDirectory(dirPath);
+
+			Debug.Log("Created directory : " + dirPath);
 		}
 
 		string filePath = dirPath += "/" + FileName;
@@ -63,8 +73,6 @@ public static class DataManager
 		using (StreamWriter writer = new StreamWriter(fileStream))
 		{
 			writer.WriteLine(jsonData);
-
-			writer.Dispose();
 		}
 	}
 

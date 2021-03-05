@@ -13,11 +13,8 @@ public class MainCanvas : MonoBehaviour
 	private void Awake()
 	{
 		DataManager.Initialize();
-	}
 
-	private void OnDestroy()
-	{
-		DataManager.SaveData();
+		OnModification += DataManager.SaveData;
 	}
 
 	/// <summary>
