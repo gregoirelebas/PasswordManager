@@ -31,6 +31,10 @@ public class EditionPanel : MonoBehaviour
 		SetInfo(null);
 	}
 
+	/// <summary>
+	/// Return true if all input field texts are not empty strings.
+	/// </summary>
+	/// <returns></returns>
 	private bool AreAllFieldComplete()
 	{
 		string label = labelField.text;
@@ -55,6 +59,9 @@ public class EditionPanel : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Set interactibility of the valid button based on input field texts.
+	/// </summary>
 	public void CheckValidButton()
 	{
 		validBtn.interactable = AreAllFieldComplete();
