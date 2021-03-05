@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 180, y: 150}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &212762508358684602
 CanvasRenderer:
@@ -67,8 +67,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'ID :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 685b2efe5282e7446865880119dac5a1, type: 2}
+  m_sharedMaterial: {fileID: 2969419074580653696, guid: 685b2efe5282e7446865880119dac5a1,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -146,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b19efd5956d8454b88fb5752cd815c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frenchText: 
   englishText: 
+  frenchText: 
 --- !u!1 &4307377554368748567
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,8 +220,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 0}
-  m_SizeDelta: {x: -220, y: 150}
+  m_AnchoredPosition: {x: 75, y: 0}
+  m_SizeDelta: {x: -250, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1565411988278140980
 CanvasRenderer:
@@ -251,8 +252,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: gimenez.klara.work@gmail.com
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 685b2efe5282e7446865880119dac5a1, type: 2}
+  m_sharedMaterial: {fileID: 2969419074580653696, guid: 685b2efe5282e7446865880119dac5a1,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
