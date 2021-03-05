@@ -11,6 +11,9 @@ public class EditionPanel : MonoBehaviour
 	[SerializeField] TMP_InputField idField = null;
 	[SerializeField] TMP_InputField passwordField = null;
 
+	[Header("")]
+	[SerializeField] private Button validBtn = null;
+
 	private MainCanvas mainCanvas = null;
 	private AccountInfo info = null;
 
@@ -28,6 +31,15 @@ public class EditionPanel : MonoBehaviour
 		SetInfo(null);
 	}
 
+	private bool AreAllFieldComplete()
+	{
+		string label = labelField.text;
+		string id = idField.text;
+		string password = passwordField.text;
+
+		return !label.Equals("") && !id.Equals("") && !password.Equals("");
+	}
+
 	/// <summary>
 	/// Set input field texts based on info.
 	/// </summary>
@@ -43,6 +55,11 @@ public class EditionPanel : MonoBehaviour
 		}
 	}
 
+	public void CheckValidButton()
+	{
+		validBtn.interactable = AreAllFieldComplete();
+	}
+
 	/// <summary>
 	/// Save the info with modification.
 	/// </summary>
@@ -52,7 +69,7 @@ public class EditionPanel : MonoBehaviour
 		string id = idField.text;
 		string password = passwordField.text;
 
-		if (!label.Equals("") && !id.Equals("") && !password.Equals(""))
+		if (AreAllFieldComplete())
 		{
 			if (info == null)
 			{
