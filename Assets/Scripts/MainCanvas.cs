@@ -4,11 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+public enum Lang
+{
+	French,
+	English
+}
+
 public class MainCanvas : MonoBehaviour
 {
 	[SerializeField] private InfoPanel infoPanel = null;
 
 	public Action OnModification = null;
+	public Action OnLangSet = null;
+
+	public Lang CurrentLang { get; private set; } = Lang.English;
 
 	private void Awake()
 	{
@@ -26,14 +35,13 @@ public class MainCanvas : MonoBehaviour
 		infoPanel.SetInfos(info);
 	}
 
-#if UNITY_EDITOR
-	public void OnGUI()
+	/// <summary>
+	/// Set a new lang to use and trigger Action OnLangSet.
+	/// </summary>
+	public void SetLang(Lang newLang)
 	{
-		if (GUI.Button(new Rect(0.0f, 0.0f, 100.0f, 20.0f), "Clear Prefs"))
-		{
-			PlayerPrefs.DeleteAll();
-			PlayerPrefs.Save();
-		}
+		CurrentLang = newLang;
+
+		OnLangSet?.Invoke();
 	}
-#endif
 }

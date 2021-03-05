@@ -22,16 +22,25 @@ public class ListPanel : MonoBehaviour
 		UpdateInfoList();
 	}
 
+	/// <summary>
+	/// Sort by label name in alphabetical order.
+	/// </summary>
 	private int SortByNameAscending(AccountInfo a, AccountInfo b)
 	{
 		return a.Label.CompareTo(b.Label);
 	}
 
+	/// <summary>
+	/// Sort by label name in reversed alphabetical order.
+	/// </summary>
 	private int SortByNameDescending(AccountInfo a, AccountInfo b)
 	{
 		return b.Label.CompareTo(a.Label);
 	}
 
+	/// <summary>
+	/// Invert sorting system and update displayed list.
+	/// </summary>
 	public void InvertSort()
 	{
 		sortAscending = !sortAscending;
