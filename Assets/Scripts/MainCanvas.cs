@@ -45,6 +45,10 @@ public class MainCanvas : MonoBehaviour
 	{
 		CurrentLang = newLang;
 
+#if DEBUG
+		Debug.Log("Set lang : " + newLang.ToString());
+#endif
+
 		OnLangSet?.Invoke();
 	}
 }
