@@ -15,6 +15,8 @@ public static class DataManager
 	public const string DirectoryName = "Data";
 	public const string FileName = "data.json";
 
+	public static bool IsUnlocked = false;
+
 	/// <summary>
 	/// Try to read the JSON file and load data is success.
 	/// </summary>

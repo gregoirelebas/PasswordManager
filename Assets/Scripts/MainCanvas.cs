@@ -6,14 +6,15 @@ using UnityEngine;
 
 public enum Lang
 {
-	French,
-	English
+	English,
+	French
 }
 
 public class MainCanvas : MonoBehaviour
 {
 	[SerializeField] private InfoPanel infoPanel = null;
-	[SerializeField] private Lang debugLang = Lang.French;
+	[SerializeField] private KeyPanel keyPanel = null;
+	[SerializeField] private Lang debugLang = Lang.English;
 
 	public Action OnModification = null;
 	public Action OnLangSet = null;
@@ -29,13 +30,32 @@ public class MainCanvas : MonoBehaviour
 		OnModification += DataManager.SaveData;
 	}
 
+	private void OnApplicationFocus(bool focus)
+	{
+		if (DataManager.IsUnlocked && focus == false)
+		{
+			DataManager.IsUnlocked = false;
+		}
+	}
+
 	/// <summary>
 	/// Set active and set infos to display.
 	/// </summary>
 	public void DisplayInfoPanel(AccountInfo info)
 	{
-		infoPanel.gameObject.SetActive(true);
-		infoPanel.SetInfos(info);
+		if (DataManager.IsUnlocked)
+		{
+			infoPanel.gameObject.SetActive(true);
+			infoPanel.SetInfos(info);
+		}
+		else
+		{
+			keyPanel.gameObject.SetActive(true);
+			keyPanel.OnUnlock += () =>
+			{
+				DisplayInfoPanel(info);
+			};
+		}
 	}
 
 	/// <summary>

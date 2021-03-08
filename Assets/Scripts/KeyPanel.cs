@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class KeyPanel : MonoBehaviour
 {
 	private const int KEY_LENGTH = 4;
+
+	public Action OnUnlock = null;
 
 	[SerializeField] private TextMeshProUGUI keyFieldText = null;
 	[SerializeField] private Transform keyContainer = null;
@@ -35,7 +37,7 @@ public class KeyPanel : MonoBehaviour
 
 	private void ResetKeySystem()
 	{
-		keyFieldText.text = "";
+		keyFieldText.text = "- - - -";
 		inputCount = 0;
 		userKey = "";
 
@@ -54,16 +56,23 @@ public class KeyPanel : MonoBehaviour
 		if (inputCount <= KEY_LENGTH)
 		{
 			userKey += keyValue.ToString();
-			keyFieldText.text += "* ";
+
+			char[] keyChar = keyFieldText.text.ToCharArray();
+			keyChar[(inputCount - 1) * 2] = '*';
+			keyFieldText.text = new string(keyChar);
 
 			if (inputCount == KEY_LENGTH)
 			{
 				Debug.Log("Matching user key with registered key...");
 				Debug.Log(userKey);
 
-				if (false)
+				if (userKey.Equals("1111"))
 				{
+					DataManager.IsUnlocked = true;
 
+					OnUnlock?.Invoke();
+
+					gameObject.SetActive(false);
 				}
 				else
 				{
