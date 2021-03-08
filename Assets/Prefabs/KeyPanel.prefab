@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 934169682529631372}
   - component: {fileID: 934169682529631369}
   - component: {fileID: 934169682529631374}
+  - component: {fileID: 7618769727383276369}
   m_Layer: 5
   m_Name: KeyPanel
   m_TagString: Untagged
@@ -484,6 +485,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7618769727383276369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934169682529631373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8618023dee9b95c45ad3c4731e7fc372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyFieldText: {fileID: 934169681954380204}
+  keyContainer: {fileID: 934169682241808156}
 --- !u!1001 &934169680852793578
 PrefabInstance:
   m_ObjectHideFlags: 0

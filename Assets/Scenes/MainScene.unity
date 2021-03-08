@@ -540,18 +540,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 80852145}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &90625305 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 934169681954380204, guid: 509f2d21fc14c2e4b87bac6e0e77aaa5,
-    type: 3}
-  m_PrefabInstance: {fileID: 934169681901800629}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &102419129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,12 +2384,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872250425}
   m_CullTransparentMesh: 0
---- !u!224 &876882857 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 934169682241808156, guid: 509f2d21fc14c2e4b87bac6e0e77aaa5,
-    type: 3}
-  m_PrefabInstance: {fileID: 934169681901800629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937796355
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,15 +4496,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1985926578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c639e59721db846a0f51856c1d4cbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cb011a0f5786da4bb53d6839496f06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyFieldText: {fileID: 90625305}
-  keyContainer: {fileID: 876882857}
-  keys: []
-  keyValues: 
-  userKey: 
-  inputCount: 0
+  keyPanel: {fileID: 0}
 --- !u!114 &1985926581
 MonoBehaviour:
   m_ObjectHideFlags: 0
