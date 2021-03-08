@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyBtn : MonoBehaviour
 {
-	public int Value { get; private set; } = 0;
-
 	[SerializeField] private TextMeshProUGUI valueText = null;
+
+	private KeyPanel panel = null;
+	private Button button = null;
+	private int keyValue = 0;
+
+	private void Awake()
+	{
+		panel = GetComponentInParent<KeyPanel>();
+		button = GetComponent<Button>();
+
+		button.onClick.AddListener(() => panel.OnKeyPressed(keyValue));
+	}
 
 	public void SetValue(int newValue)
 	{
-		Value = newValue;
+		keyValue = newValue;
 
-		valueText.text = Value.ToString();
-	}	
+		valueText.text = keyValue.ToString();
+
+		
+	}
 }
