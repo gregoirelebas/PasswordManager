@@ -8,13 +8,13 @@ public class KeyBtn : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI valueText = null;
 
-	private KeyPanel panel = null;
+	private AuthentificationPanel panel = null;
 	private Button button = null;
 	private int keyValue = 0;
 
 	private void Awake()
 	{
-		panel = GetComponentInParent<KeyPanel>();
+		panel = GetComponentInParent<AuthentificationPanel>();
 		button = GetComponent<Button>();
 
 		button.onClick.AddListener(() => panel.OnKeyPressed(keyValue));

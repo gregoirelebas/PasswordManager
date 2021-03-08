@@ -5,7 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class KeyPanel : MonoBehaviour
+public class AuthentificationPanel : MonoBehaviour
 {
 	private const int KEY_LENGTH = 4;
 

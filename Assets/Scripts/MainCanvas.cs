@@ -13,7 +13,7 @@ public enum Lang
 public class MainCanvas : MonoBehaviour
 {
 	[SerializeField] private InfoPanel infoPanel = null;
-	[SerializeField] private KeyPanel keyPanel = null;
+	[SerializeField] private AuthentificationPanel keyPanel = null;
 	[SerializeField] private Lang debugLang = Lang.English;
 
 	public Action OnModification = null;
