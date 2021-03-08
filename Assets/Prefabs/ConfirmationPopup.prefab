@@ -109,10 +109,10 @@ RectTransform:
   m_Father: {fileID: 2743488835074881753}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 640, y: -100}
+  m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2743488834669559568
 CanvasRenderer:
@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 2743488834853570715}
   - component: {fileID: 2743488834853570917}
   - component: {fileID: 2743488834853570714}
+  - component: {fileID: 8012794725719000434}
   m_Layer: 5
   m_Name: ConfirmationText
   m_TagString: Untagged
@@ -339,6 +340,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8012794725719000434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743488834853570712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b19efd5956d8454b88fb5752cd815c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Are you sure?
+  frenchText: Etes-vous sur?
 --- !u!1 &2743488835074881758
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,10 +450,10 @@ RectTransform:
   m_Father: {fileID: 2743488835074881753}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 290, y: -100}
+  m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2743488835217874286
 CanvasRenderer:
@@ -549,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2743488835727531923
 RectTransform:
   m_ObjectHideFlags: 0
