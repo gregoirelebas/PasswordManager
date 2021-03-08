@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class OptionPanel : MonoBehaviour
 {
-    private MainCanvas mainCanvas = null;
+	[SerializeField] private ConfirmationPopup confirmationPopup = null;
+
+	private MainCanvas mainCanvas = null;
 
 	private void Awake()
 	{
@@ -19,5 +21,19 @@ public class OptionPanel : MonoBehaviour
 	public void SetFrench()
 	{
 		mainCanvas.SetLang(Lang.French);
+	}
+
+	public void EraseAllData()
+	{
+		confirmationPopup.OnValidation += () =>
+		{
+			DataManager.DeleteAllInfos();
+
+			mainCanvas.OnModification();
+
+			gameObject.SetActive(false);
+		};
+
+		confirmationPopup.gameObject.SetActive(true);
 	}
 }

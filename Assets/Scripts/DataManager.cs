@@ -167,4 +167,13 @@ public static class DataManager
 			Debug.LogError("Infos do not contains key, can't delete : " + info.Label);
 		}
 	}
+
+	public static void DeleteAllInfos()
+	{
+		infos.Clear();
+
+		KeyIndex = 0;
+
+		SaveData();
+	}
 }

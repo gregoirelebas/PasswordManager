@@ -8,6 +8,11 @@ public class ConfirmationPopup : MonoBehaviour
 {
 	public Action OnValidation = null;
 
+	private void OnDisable()
+	{
+		OnValidation = null;
+	}
+
 	public void Yes()
 	{
 		OnValidation?.Invoke();
