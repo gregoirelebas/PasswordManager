@@ -14,13 +14,7 @@ public class InfoPanel : MonoBehaviour
 	[SerializeField] private EditionPanel editionPanel = null;
 	[SerializeField] private ConfirmationPopup confirmationPopup = null;
 
-	private MainCanvas mainCanvas = null;
 	private AccountInfo info = null;
-
-	private void Awake()
-	{
-		mainCanvas = GetComponentInParent<MainCanvas>();
-	}
 
 	/// <summary>
 	/// Update text based on infos.
@@ -55,7 +49,7 @@ public class InfoPanel : MonoBehaviour
 		{
 			DataManager.DeleteInfo(info);
 
-			mainCanvas.OnModification?.Invoke();
+			MainCanvas.Instance.OnModification?.Invoke();
 
 			gameObject.SetActive(false);
 		};

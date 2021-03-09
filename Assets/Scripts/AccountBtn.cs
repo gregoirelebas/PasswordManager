@@ -8,7 +8,6 @@ public class AccountBtn : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI label = null;
 
-	private MainCanvas mainCanvas = null;
 	private AccountInfo info = null;
 
 	private void Awake()
@@ -19,9 +18,8 @@ public class AccountBtn : MonoBehaviour
 	/// <summary>
 	/// Update text based on info.
 	/// </summary>
-	public void SetAccountInfo(MainCanvas mainCanvas, AccountInfo info)
+	public void SetAccountInfo(AccountInfo info)
 	{
-		this.mainCanvas = mainCanvas;
 		this.info = info;
 
 		label.text = info.Label;
@@ -32,6 +30,6 @@ public class AccountBtn : MonoBehaviour
 	/// </summary>
 	public void OnClicked()
 	{
-		mainCanvas.DisplayInfoPanel(info);
+		MainCanvas.Instance.DisplayInfoPanel(info);
 	}
 }

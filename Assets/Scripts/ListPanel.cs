@@ -8,13 +8,11 @@ public class ListPanel : MonoBehaviour
 
 	[SerializeField] private GameObject accountBtnPrefab = null;
 
-	private MainCanvas mainCanvas = null;
 	private bool sortAscending = true;
 
 	private void Awake()
 	{
-		mainCanvas = GetComponentInParent<MainCanvas>();
-		mainCanvas.OnModification += UpdateInfoList;
+		MainCanvas.Instance.OnModification += UpdateInfoList;
 	}
 
 	private void OnEnable()
@@ -73,7 +71,7 @@ public class ListPanel : MonoBehaviour
 		{
 			AccountBtn newButton = Instantiate(accountBtnPrefab, container).GetComponent<AccountBtn>();
 
-			newButton.SetAccountInfo(mainCanvas, info);
+			newButton.SetAccountInfo(info);
 		}
 	}
 }

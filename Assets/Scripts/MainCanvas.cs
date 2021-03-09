@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public enum Lang
@@ -12,17 +10,23 @@ public enum Lang
 
 public class MainCanvas : MonoBehaviour
 {
+	public static MainCanvas Instance { get; private set; } = null;
+
+	[SerializeField] private GameObject notificationPrefab = null;
+
 	[SerializeField] private InfoPanel infoPanel = null;
 	[SerializeField] private AuthentificationPanel keyPanel = null;
 	[SerializeField] private Lang debugLang = Lang.French;
 
-	public Action OnModification = null;
-	public Action OnLangSet = null;
+	public System.Action OnModification = null;
+	public System.Action OnLangSet = null;
 
 	public Lang CurrentLang { get; private set; } = Lang.English;
 
 	private void Awake()
 	{
+		Instance = this;
+
 		DataManager.Initialize();
 
 #if UNITY_EDITOR
@@ -72,5 +76,12 @@ public class MainCanvas : MonoBehaviour
 #endif
 
 		OnLangSet?.Invoke();
+	}
+
+	public void SendNotification(NotificationType notifType)
+	{
+		Notification notif = Instantiate(notificationPrefab, transform).GetComponent<Notification>();
+
+		notif.SetNotification(notifType);
 	}
 }

@@ -14,13 +14,7 @@ public class EditionPanel : MonoBehaviour
 	[Header("")]
 	[SerializeField] private Button validBtn = null;
 
-	private MainCanvas mainCanvas = null;
 	private AccountInfo info = null;
-
-	private void Awake()
-	{
-		mainCanvas = GetComponentInParent<MainCanvas>();
-	}
 
 	private void OnEnable()
 	{
@@ -91,7 +85,7 @@ public class EditionPanel : MonoBehaviour
 
 			DataManager.AddInfo(info);
 
-			mainCanvas.OnModification?.Invoke();
+			MainCanvas.Instance.OnModification?.Invoke();
 
 			gameObject.SetActive(false);
 		}

@@ -8,15 +8,13 @@ public class LocalisedTextPro : MonoBehaviour
     [SerializeField] private string englishText = null;
     [SerializeField] private string frenchText = null;
 
-	private MainCanvas mainCanvas = null;
     private TextMeshProUGUI textMesh = null;
 
 	private void Awake()
 	{
 		textMesh = GetComponent<TextMeshProUGUI>();
-		mainCanvas = GetComponentInParent<MainCanvas>();
 
-		mainCanvas.OnLangSet += SetTextByLang;
+		MainCanvas.Instance.OnLangSet += SetTextByLang;
 	}
 
 	private void OnEnable()
@@ -29,7 +27,7 @@ public class LocalisedTextPro : MonoBehaviour
 	/// </summary>
 	private void SetTextByLang()
 	{
-		switch (mainCanvas.CurrentLang)
+		switch (MainCanvas.Instance.CurrentLang)
 		{
 			case Lang.French:
 				textMesh.text = frenchText;
@@ -42,7 +40,7 @@ public class LocalisedTextPro : MonoBehaviour
 			default:
 				textMesh.text = englishText;
 
-				Debug.LogWarning("Unknown lang : " + mainCanvas.CurrentLang.ToString() + ", setting english as default");
+				Debug.LogWarning("Unknown lang : " + MainCanvas.Instance.CurrentLang.ToString() + ", setting english as default");
 				break;
 		}
 	}

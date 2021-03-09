@@ -13,6 +13,9 @@ public class OptionPanel : MonoBehaviour
 		mainCanvas = GetComponentInParent<MainCanvas>();
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
 	public void SetEnglish()
 	{
 		mainCanvas.SetLang(Lang.English);
@@ -29,7 +32,7 @@ public class OptionPanel : MonoBehaviour
 		{
 			DataManager.DeleteAllInfos();
 
-			mainCanvas.OnModification();
+			MainCanvas.Instance.OnModification();
 
 			gameObject.SetActive(false);
 		};
