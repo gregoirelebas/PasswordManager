@@ -14,7 +14,7 @@ public class MainCanvas : MonoBehaviour
 {
 	[SerializeField] private InfoPanel infoPanel = null;
 	[SerializeField] private AuthentificationPanel keyPanel = null;
-	[SerializeField] private Lang debugLang = Lang.English;
+	[SerializeField] private Lang debugLang = Lang.French;
 
 	public Action OnModification = null;
 	public Action OnLangSet = null;
@@ -25,7 +25,9 @@ public class MainCanvas : MonoBehaviour
 	{
 		DataManager.Initialize();
 
+#if UNITY_EDITOR
 		CurrentLang = debugLang;
+#endif
 
 		OnModification += DataManager.SaveData;
 	}
