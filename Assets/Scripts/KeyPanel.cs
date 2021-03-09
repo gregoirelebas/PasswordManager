@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -9,7 +8,7 @@ public class KeyPanel : MonoBehaviour
 {
 	private const int KEY_LENGTH = 4;
 
-	public Action<string> OnKeyTry = null;
+	public System.Action<string> OnCodeAccess = null;
 
 	[SerializeField] private TextMeshProUGUI keyFieldText = null;
 	[SerializeField] private Transform keyContainer = null;
@@ -63,7 +62,7 @@ public class KeyPanel : MonoBehaviour
 
 			if (inputCount == KEY_LENGTH)
 			{
-				OnKeyTry(inputKey);
+				OnCodeAccess(inputKey);
 			}
 		}
 	}

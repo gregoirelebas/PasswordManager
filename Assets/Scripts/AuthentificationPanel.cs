@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AuthentificationPanel : MonoBehaviour
 {
-	public Action OnUnlock = null;
+	public System.Action OnUnlock = null;
 
 	[SerializeField] private KeyPanel keyPanel = null;
 
+	private string userCode = "";
+
 	private void Awake()
+	{		
+		keyPanel.OnCodeAccess += UnlockData;
+	}
+
+	private void OnEnable()
 	{
-		keyPanel.OnKeyTry += UnlockData;
+		userCode = PlayerPrefs.GetString("UserCode", "");
 	}
 
 	private void UnlockData(string inputKey)
@@ -19,7 +25,7 @@ public class AuthentificationPanel : MonoBehaviour
 		Debug.Log("Matching user key with registered key...");
 		Debug.Log(inputKey);
 
-		if (inputKey.Equals("1111"))
+		if (inputKey.Equals(userCode))
 		{
 			DataManager.IsUnlocked = true;
 

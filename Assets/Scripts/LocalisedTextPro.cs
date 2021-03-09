@@ -15,12 +15,13 @@ public class LocalisedTextPro : MonoBehaviour
 	{
 		textMesh = GetComponent<TextMeshProUGUI>();
 		mainCanvas = GetComponentInParent<MainCanvas>();
+
+		mainCanvas.OnLangSet += SetTextByLang;
 	}
 
-	private void Start()
+	private void OnEnable()
 	{
-		SetTextByLang();
-		mainCanvas.OnLangSet += SetTextByLang;
+		SetTextByLang();		
 	}
 
 	/// <summary>
