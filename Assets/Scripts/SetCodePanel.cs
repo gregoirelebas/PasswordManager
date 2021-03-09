@@ -69,6 +69,8 @@ public class SetCodePanel : MonoBehaviour
 		else
 		{
 			keyPanel.ResetKeySystem();
+
+			MainCanvas.Instance.SendNotification(NotificationType.WrongPassword);
 		}
 	}
 

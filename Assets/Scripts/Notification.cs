@@ -37,16 +37,23 @@ public class Notification : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI notifText = null;
 
+	[Header("Lerp values")]
+	[SerializeField] private float startPos = 250.0f;
+	[SerializeField] private float endPos = 350.0f;
+	[SerializeField] private float lerpTime = 1.0f;
+
 	[Header("LocalizedText")]
 	[SerializeField] private NotificationLocalizedText wrongPassword = null;
 	[SerializeField] private NotificationLocalizedText newPassword = null;
 	[SerializeField] private NotificationLocalizedText allDataClear = null;
 
+	private RectTransform rectTransform = null;
 	private CanvasGroup group = null;
 
 	private void Awake()
 	{
 		group = GetComponent<CanvasGroup>();
+		rectTransform = GetComponent<RectTransform>();
 	}
 
 	public void SetNotification(NotificationType notifType)
@@ -69,5 +76,18 @@ public class Notification : MonoBehaviour
 				Debug.LogWarning("Unknown notification type :" + notifType.ToString());
 				break;
 		}
+
+		LeanTween.value(1.0f, 0.0f, lerpTime).setOnUpdate((float alpha) =>
+		{
+			group.alpha = alpha;
+		});
+
+		LeanTween.value(startPos, endPos, lerpTime).setOnUpdate((float newPos) =>
+		{
+			rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, newPos);
+		}).setOnComplete(() =>
+		{
+			Destroy(gameObject);
+		});
 	}
 }

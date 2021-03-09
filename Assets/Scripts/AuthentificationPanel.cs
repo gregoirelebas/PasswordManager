@@ -41,6 +41,8 @@ public class AuthentificationPanel : MonoBehaviour
 		else
 		{
 			keyPanel.ResetKeySystem();
+
+			MainCanvas.Instance.SendNotification(NotificationType.WrongPassword);
 		}
 	}
 }
