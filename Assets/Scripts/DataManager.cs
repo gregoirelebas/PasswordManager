@@ -252,6 +252,9 @@ public static class DataManager
 		}
 	}
 
+	/// <summary>
+	/// Delete all infos in list and save file.
+	/// </summary>
 	public static void DeleteAllInfos()
 	{
 		infos.Clear();

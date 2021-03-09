@@ -13,6 +13,9 @@ public class ConfirmationPopup : MonoBehaviour
 		OnValidation = null;
 	}
 
+	/// <summary>
+	/// If Yes, Invoke action, clear it and disable popup.
+	/// </summary>
 	public void Yes()
 	{
 		OnValidation?.Invoke();

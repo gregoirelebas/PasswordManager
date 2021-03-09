@@ -34,6 +34,9 @@ public class KeyPanel : MonoBehaviour
 		ResetKeySystem();
 	}
 
+	/// <summary>
+	/// Generate a new keyboard pattern and reset all fields.
+	/// </summary>
 	public void ResetKeySystem()
 	{
 		keyFieldText.text = "- - - -";
@@ -49,6 +52,9 @@ public class KeyPanel : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Called when a key button is pressed. After KEY_LENGTH input, Invoke action OnCodeAccess.
+	/// </summary>
 	public void OnKeyPressed(int keyValue)
 	{
 		inputCount++;
@@ -62,7 +68,7 @@ public class KeyPanel : MonoBehaviour
 
 			if (inputCount == KEY_LENGTH)
 			{
-				OnCodeAccess(inputKey);
+				OnCodeAccess?.Invoke(inputKey);
 			}
 		}
 	}

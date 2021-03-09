@@ -20,10 +20,15 @@ public class AuthentificationPanel : MonoBehaviour
 		userCode = PlayerPrefs.GetString("UserCode", "");
 	}
 
+	/// <summary>
+	/// Try to match inputKey with userKey. If success, unlock data access.
+	/// </summary>
 	private void UnlockData(string inputKey)
 	{
+#if DEBUG
 		Debug.Log("Matching user key with registered key...");
 		Debug.Log(inputKey);
+#endif
 
 		if (inputKey.Equals(userCode))
 		{

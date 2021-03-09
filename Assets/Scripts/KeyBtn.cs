@@ -20,6 +20,9 @@ public class KeyBtn : MonoBehaviour
 		button.onClick.AddListener(() => panel.OnKeyPressed(keyValue));
 	}
 
+	/// <summary>
+	/// Set a new value to this key button and display it.
+	/// </summary>
 	public void SetValue(int newValue)
 	{
 		keyValue = newValue;
