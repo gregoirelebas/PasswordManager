@@ -32,10 +32,10 @@ public class InfoPanel : MonoBehaviour
 		this.info = info;
 
 		labelField.text = info.Label;
-		idField.text = info.Id;
-		passwordField.text = info.Password;
+		idField.text = DataManager.Decrypt(info.Id, DataManager.EncryptionKey);
+		passwordField.text = DataManager.Decrypt(info.Password, DataManager.EncryptionKey);
 	}
-
+	
 	/// <summary>
 	/// Set active the edition panel and desactivate self.
 	/// </summary>

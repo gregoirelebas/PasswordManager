@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public static class DataManager
 {
 	private static Dictionary<string, AccountInfo> infos = new Dictionary<string, AccountInfo>();
+
+	public static string EncryptionKey = "";
 
 	public static int KeyIndex { get; private set; } = 0;
 	public const string NoKey = "NoKey";
@@ -16,6 +19,83 @@ public static class DataManager
 	public const string FileName = "data.json";
 
 	public static bool IsUnlocked = false;
+
+	#region Encryption
+
+	/// <summary> 
+	///Encrypt a byte array into a byte array using a key and an IV.
+	/// </summary>
+	public static byte[] Encrypt(byte[] clearData, byte[] Key, byte[] IV)
+	{
+		MemoryStream ms = new MemoryStream();
+
+		Rijndael alg = Rijndael.Create();
+
+		alg.Key = Key;
+		alg.IV = IV;
+
+		using (CryptoStream cs = new CryptoStream(ms, alg.CreateEncryptor(), CryptoStreamMode.Write))
+		{
+			cs.Write(clearData, 0, clearData.Length);
+		}
+
+		byte[] encryptedData = ms.ToArray();
+
+		return encryptedData;
+	}
+
+	/// <summary>
+	/// Encrypt a string into a crypted string using a password.
+	/// </summary>
+	public static string Encrypt(string clearText, string Password)
+	{
+		byte[] clearBytes = System.Text.Encoding.Unicode.GetBytes(clearText);
+
+		PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+
+		byte[] encryptedData = Encrypt(clearBytes, pdb.GetBytes(32), pdb.GetBytes(16));
+
+		return System.Convert.ToBase64String(encryptedData);
+	}
+
+	/// <summary>
+	/// Decrypt a byte array into a byte array using a key and an IV.
+	/// </summary>
+	public static byte[] Decrypt(byte[] cipherData, byte[] Key, byte[] IV)
+	{
+		MemoryStream ms = new MemoryStream();
+
+		Rijndael alg = Rijndael.Create();
+
+		alg.Key = Key;
+		alg.IV = IV;
+
+		using (CryptoStream cs = new CryptoStream(ms, alg.CreateDecryptor(), CryptoStreamMode.Write))
+		{
+			cs.Write(cipherData, 0, cipherData.Length);
+		}
+
+		byte[] decryptedData = ms.ToArray();
+
+		return decryptedData;
+	}
+
+	/// <summary>
+	/// Encrypt a string into a crypted string and a password.
+	/// </summary>
+	public static string Decrypt(string cipherText, string Password)
+	{
+		byte[] cipherBytes = System.Convert.FromBase64String(cipherText);
+
+		PasswordDeriveBytes pdb = new PasswordDeriveBytes(Password, new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
+
+		byte[] decryptedData = Decrypt(cipherBytes,
+			pdb.GetBytes(32), pdb.GetBytes(16));
+
+		return System.Text.Encoding.Unicode.GetString(decryptedData);
+	}
+
+	#endregion
 
 	/// <summary>
 	/// Try to read the JSON file and load data is success.
@@ -85,16 +165,9 @@ public static class DataManager
 	{
 		infos = new Dictionary<string, AccountInfo>();
 
-		LoadData();
+		EncryptionKey = PlayerPrefs.GetString("EncryptionKey", "");
 
-		//AddInfo(new AccountInfo("Pinterest", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		//AddInfo(new AccountInfo("9GAG", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		//AddInfo(new AccountInfo("Artstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		//AddInfo(new AccountInfo("Linkedin", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		//AddInfo(new AccountInfo("Facebook", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		//AddInfo(new AccountInfo("Twitter", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		//AddInfo(new AccountInfo("Youtube", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
-		//AddInfo(new AccountInfo("Playstation", "gregoire.lebas@gmail.com", "123456789ABCDEF"));
+		LoadData();
 	}
 
 	/// <summary>
@@ -127,6 +200,17 @@ public static class DataManager
 
 			KeyIndex++;
 		}
+
+		if (EncryptionKey.Equals(""))
+		{
+			EncryptionKey = info.Label;
+
+			PlayerPrefs.SetString("EncryptionKey", EncryptionKey);
+			PlayerPrefs.Save();
+		}
+
+		info.Id = Encrypt(info.Id, EncryptionKey);
+		info.Password = Encrypt(info.Password, EncryptionKey);
 
 		if (!infos.ContainsKey(info.Key))
 		{
