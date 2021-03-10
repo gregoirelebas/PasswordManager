@@ -90,8 +90,15 @@ public class SetCodePanel : MonoBehaviour
 
 	public void Close()
 	{
-		oldCodeUnlocked = false;
+		if (userCode.Equals(""))
+		{
+			MainCanvas.Instance.SendNotification(NotificationType.PasswordRequired);
+		}
+		else
+		{
+			oldCodeUnlocked = false;
 
-		gameObject.SetActive(false);
+			gameObject.SetActive(false);
+		}
 	}
 }

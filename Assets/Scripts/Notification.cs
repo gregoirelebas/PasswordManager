@@ -7,6 +7,7 @@ public enum NotificationType
 {
 	WrongPassword,
 	NewPassword,
+	PasswordRequired,
 	AllDataClear,
 }
 
@@ -48,6 +49,7 @@ public class Notification : MonoBehaviour
 	[SerializeField] private NotificationLocalizedText wrongPassword = null;
 	[SerializeField] private NotificationLocalizedText newPassword = null;
 	[SerializeField] private NotificationLocalizedText allDataClear = null;
+	[SerializeField] private NotificationLocalizedText passwordRequired = null;
 
 	private RectTransform rectTransform = null;
 	private CanvasGroup group = null;
@@ -72,6 +74,10 @@ public class Notification : MonoBehaviour
 
 			case NotificationType.AllDataClear:
 				notifText.text = allDataClear.GetString();
+				break;
+
+			case NotificationType.PasswordRequired:
+				notifText.text = passwordRequired.GetString();
 				break;
 
 			default:

@@ -5071,7 +5071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Erase all data
-  frenchText: Effacer les donnees
+  frenchText: "Effacer les donn\xE9es"
 --- !u!114 &1941850378
 MonoBehaviour:
   m_ObjectHideFlags: 0

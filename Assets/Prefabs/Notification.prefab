@@ -246,7 +246,10 @@ MonoBehaviour:
     frenchText: Mauvais mot de passe
   newPassword:
     englishText: New PIN code set
-    frenchText: Nouveau code PIN mis a jour
+    frenchText: "Nouveau code PIN mis \xE0 jour"
   allDataClear:
     englishText: All data have been cleared
-    frenchText: Toutes les donnees ont ete effaces
+    frenchText: "Toutes les donn\xE9es ont \xE9t\xE9 effac\xE9es"
+  passwordRequired:
+    englishText: PIN code required
+    frenchText: Code PIN requis
