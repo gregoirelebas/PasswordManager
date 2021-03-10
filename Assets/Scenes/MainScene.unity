@@ -672,6 +672,7 @@ MonoBehaviour:
     type: 3}
   infoPanel: {fileID: 160989674}
   keyPanel: {fileID: 1985926580}
+  setCodePanel: {fileID: 720826759}
   debugLang: 1
 --- !u!1 &140674642
 GameObject:

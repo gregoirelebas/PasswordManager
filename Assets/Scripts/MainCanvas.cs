@@ -16,6 +16,7 @@ public class MainCanvas : MonoBehaviour
 
 	[SerializeField] private InfoPanel infoPanel = null;
 	[SerializeField] private AuthentificationPanel keyPanel = null;
+	[SerializeField] private SetCodePanel setCodePanel = null;
 	[SerializeField] private Lang debugLang = Lang.French;
 
 	public System.Action OnModification = null;
@@ -28,6 +29,11 @@ public class MainCanvas : MonoBehaviour
 		Instance = this;
 
 		DataManager.Initialize();
+
+		if (PlayerPrefs.GetString("UserCode", "").Equals(""))
+		{
+			setCodePanel.gameObject.SetActive(true);
+		}
 
 #if UNITY_EDITOR
 		CurrentLang = debugLang;
