@@ -41,6 +41,7 @@ public class Notification : MonoBehaviour
 	[SerializeField] private float startPos = 250.0f;
 	[SerializeField] private float endPos = 350.0f;
 	[SerializeField] private float lerpTime = 1.0f;
+	[SerializeField] private float delayBeforeFade = 1.0f;
 	[SerializeField] private float fadeTime = 1.0f;
 
 	[Header("LocalizedText")]
@@ -78,19 +79,21 @@ public class Notification : MonoBehaviour
 				break;
 		}
 
-
-
 		LeanTween.value(startPos, endPos, lerpTime).setOnUpdate((float newPos) =>
 		{
 			rectTransform.anchoredPosition = new Vector2(newPos, rectTransform.anchoredPosition.y);
 		}).setOnComplete(() =>
 		{
-			LeanTween.value(1.0f, 0.0f, fadeTime).setOnUpdate((float alpha) =>
+			//Set a delay before fading.
+			LeanTween.value(0.0f, 1.0f, delayBeforeFade).setOnComplete(() =>
 			{
-				group.alpha = alpha;
-			}).setOnComplete(() =>
-			{
-				Destroy(gameObject);
+				LeanTween.value(1.0f, 0.0f, fadeTime).setOnUpdate((float alpha) =>
+				{
+					group.alpha = alpha;
+				}).setOnComplete(() =>
+				{
+					Destroy(gameObject);
+				});
 			});
 		});
 	}
