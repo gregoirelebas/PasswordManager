@@ -34,6 +34,8 @@ public class OptionPanel : MonoBehaviour
 
 			MainCanvas.Instance.OnModification();
 
+			MainCanvas.Instance.SendNotification(NotificationType.AllDataClear);
+
 			gameObject.SetActive(false);
 		};
 

@@ -83,6 +83,8 @@ public class SetCodePanel : MonoBehaviour
 		PlayerPrefs.SetString("UserCode", userCode);
 		PlayerPrefs.Save();
 
+		MainCanvas.Instance.SendNotification(NotificationType.NewPassword);
+
 		Close();
 	}
 
