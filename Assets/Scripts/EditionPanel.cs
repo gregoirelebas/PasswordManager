@@ -47,7 +47,7 @@ public class EditionPanel : MonoBehaviour
 
 		if (info != null)
 		{
-			labelField.text = DataManager.Decrypt(info.Label, DataManager.EncryptionKey);
+			labelField.text = info.Label;
 			idField.text = DataManager.Decrypt(info.Id, DataManager.EncryptionKey);
 			passwordField.text = DataManager.Decrypt(info.Password, DataManager.EncryptionKey);
 		}

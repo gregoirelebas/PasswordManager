@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "abd6d4ed0404",
     "m_SelectedPackage": {
         "deviceId": "abd6d4ed0404",
-        "name": "com.HyloKlakProduction.ZenPasswordManager",
-        "processId": 5360,
+        "name": "com.ThePurpleOwlProdution.ZenPasswordManager",
+        "processId": 15444,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -19,6 +19,18 @@
             "name": "com.HyloKlakProduction.ZenPasswordManager",
             "processId": 5360,
             "exited": false
+        },
+        {
+            "deviceId": "abd6d4ed0404",
+            "name": "com.HyloKlakProduction.ZenPasswordManager",
+            "processId": 8270,
+            "exited": false
+        },
+        {
+            "deviceId": "abd6d4ed0404",
+            "name": "com.ThePurpleOwlProdution.ZenPasswordManager",
+            "processId": 15444,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -29,7 +41,7 @@
             },
             {
                 "m_Name": "No Filter",
-                "m_Selected": true
+                "m_Selected": false
             },
             {
                 "m_Name": "",
@@ -45,7 +57,7 @@
             },
             {
                 "m_Name": "Unity",
-                "m_Selected": false
+                "m_Selected": true
             },
             {
                 "m_Name": "CRASH",
