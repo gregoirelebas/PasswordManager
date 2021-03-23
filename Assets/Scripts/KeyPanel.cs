@@ -25,7 +25,7 @@ public class KeyPanel : MonoBehaviour
 
 		for (int i = 0; i < keys.Length; i++)
 		{
-			keyValues.Add(i + 1);
+			keyValues.Add(i);
 		}
 	}
 
